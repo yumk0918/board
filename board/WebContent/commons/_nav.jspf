@@ -22,8 +22,20 @@
 				role="button" aria-haspopup="true" aria-expanded="false">
 				접속하기<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li class="active"><a href="login.jsp">로그인</a></li>
-						<li ><a href="join.jsp">회원가입</a></li>
+		<%  /* 스크트립릿 */
+			Object userId=session.getAttribute("userId");
+			if(userId==null){
+		%>
+						<li><a href="login.jsp">로그인</a></li>
+						<li><a href="join.jsp">회원가입</a></li>
+		<%
+			}else {
+		%>	
+						<li><a href="">로그아웃</a></li>
+						<li><a href="">개인정보수정</a></li>
+		<%
+			}
+		%>
 					</ul>
 				</li>
 				
