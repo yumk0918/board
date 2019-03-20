@@ -3,12 +3,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.board.user.User;
+import com.board.user.UserTest;
 
 public class DatabaseTest {
 
 	@Test
 	public void addAndFindWhenExisted() {
-		User user = new User("userId","password","¿Ã∏ß","aym7330@naver.com");
+		User user=UserTest.TEST_USER;
 		Database.addUser(user);
 		
 		User dbUser=Database.findByUserID(user.getUserId());
