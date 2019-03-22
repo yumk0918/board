@@ -8,10 +8,7 @@
 </head>
 <body>
 <%@ include file="./commons/_nav.jspf" %>
-	<script>
-		location.href="login.jsp";
-	</script>
-	
+<h1>메인페이지</h1>
 <%@ include file="./commons/_body.jspf" %>
 </body>
 </html>

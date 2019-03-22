@@ -11,7 +11,7 @@
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
 			<div class="jumbotron" style="padding-top:20px;">
-				<form method="post" class="form-horizontal" action="join_action.jsp">
+				<form method="post" class="form-horizontal" action="/users/save">
 				<h2 style="text-align:center">회원가입 화면</h2>
 					<div class="form-group">
 						<label  class="control-label col-sm-2" for="userID">아이디 : </label>

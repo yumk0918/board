@@ -11,7 +11,7 @@
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6">
 			<div class="jumbotron" style="padding-top:20px;">
-				<form method="post" action="login_action.jsp">
+				<form method="post" action="/users/login">
 						<h2 style="text-align:center">로그인 화면</h2>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">
