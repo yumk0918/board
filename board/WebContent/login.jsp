@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,17 +23,13 @@
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary form-control" value="로그인">								
 					</div>
-					<%
-						Object errorMessage =request.getAttribute("errorMessage");
-						if(errorMessage!=null){
-							
-					%>
+
+					<c:if test="${ not empty errorMessage}">
 					<div class="form-group">
-						<label class="error" style="color:red;"><%=errorMessage %></label>
+						<label class="error" style="color:red;">${errorMessage}</label>
 					</div>
-					<%
-						}
-					%>
+					</c:if>
+
 				</form>
 			</div>
 		</div>
