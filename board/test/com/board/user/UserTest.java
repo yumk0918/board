@@ -2,12 +2,20 @@ package com.board.user;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import com.board.db.Database;
-
 public class UserTest {
-	public static User TEST_USER=new User("userId","password","¿Ã∏ß","aym7330@naver.com"); 
+	public static User TEST_USER=new User("userId","password","name","temp@naver.com");
+	private UserDAO userDAO; 
+	
+	@Before
+	public void setup() throws SQLException {
+		userDAO = new UserDAO();
+		userDAO.removeUser(TEST_USER.getUserId());
+	}
 	@Test
 	public void matchPassword() {
 		
@@ -22,7 +30,7 @@ public class UserTest {
 	@Test
 	public void login() throws Exception {
 		User user=UserTest.TEST_USER;
-		Database.addUser(user);	
+		userDAO.addUser(user);	
 		assertTrue(User.login(TEST_USER.getUserId(),TEST_USER.getPassword()));
 	}
 	
@@ -34,7 +42,7 @@ public class UserTest {
 	@Test(expected=PasswordMismatchException.class )
 	public void loginWhenPasswordMismatch() throws Exception {
 		User user=UserTest.TEST_USER;
-		Database.addUser(user);	
+		userDAO.addUser(user);	
 		User.login(TEST_USER.getUserId(),"password2");
 	}
 }
