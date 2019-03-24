@@ -9,27 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/users/save")
-public class SaveUerServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
- 
-    public SaveUerServlet() {
-        super();
-    }
+@WebServlet("/users/update")
+public class UserUpdateServlet extends HttpServlet {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String userId =request.getParameter("userId");
 		String password =request.getParameter("password");
 		String name =request.getParameter("name");
 		String email =request.getParameter("email");
-		System.out.print(name);
+		
 		User user=new User(userId, password, name, email);
 		UserDAO userDAO=new UserDAO();
 		try {
-			userDAO.addUser(user);
+			userDAO.updateUser(user);
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 		response.sendRedirect("/");
 	}

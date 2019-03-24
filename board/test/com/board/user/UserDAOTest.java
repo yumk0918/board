@@ -33,7 +33,13 @@ public class UserDAOTest {
 		userDao.addUser(user);
 		
 		User dbuser=userDao.findByUserId(user.getUserId());
-		assertEquals(UserTest.TEST_USER,dbuser);		
+		assertEquals(UserTest.TEST_USER,dbuser);
+		
+		User updateUser= new User(user.getUserId(),"uPassword","uName","uEmail@naver.com");
+		userDao.updateUser(updateUser);	
+		
+		dbuser=userDao.findByUserId(updateUser.getUserId());
+		assertEquals(updateUser,dbuser);
 	}
 	
 	@Test

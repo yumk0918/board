@@ -13,21 +13,16 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/users/login")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public LoginServlet() {
-        super();
-    }
-
+	public static final String SESSION_USER_ID = "userId";
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId =request.getParameter("userID");
+		String userId =request.getParameter(SESSION_USER_ID);
 		String password =request.getParameter("password");
 		try{
 			User.login(userId, password);
 			// session을 가져올 수 없음 (Servlet)
 			HttpSession session=request.getSession();
-			session.setAttribute("userId", userId);
+			session.setAttribute(SESSION_USER_ID, userId);
 			response.sendRedirect("/");
 		}catch(UserNotFoundException e){
 			forwardJSP(request, response, "존재하지 않는 사용자입니다. 다시 로그인하세요.");

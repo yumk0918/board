@@ -17,8 +17,7 @@ public class UserTest {
 		userDAO.removeUser(TEST_USER.getUserId());
 	}
 	@Test
-	public void matchPassword() {
-		
+	public void matchPassword() {		
 		assertTrue(TEST_USER.matchPassword("password"));
 	}
 	
