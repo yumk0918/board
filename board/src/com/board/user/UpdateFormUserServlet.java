@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/users/updateform")
+@WebServlet("/users/updateForm")
 public class UpdateFormUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,7 @@ public class UpdateFormUserServlet extends HttpServlet {
 		try {
 			User user=userDao.findByUserId(userId);
 			request.setAttribute("user", user);
-			RequestDispatcher rd=request.getRequestDispatcher("/update_form.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("/form.jsp");
 			rd.forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();

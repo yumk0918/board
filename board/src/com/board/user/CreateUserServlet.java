@@ -9,13 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/users/save")
-public class SaveUerServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
- 
-    public SaveUerServlet() {
-        super();
-    }
+@WebServlet("/users/create")
+public class CreateUserServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
