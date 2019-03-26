@@ -57,15 +57,7 @@ public class UserDAO {
 			if(!rs.next()) {
 				return null;
 			}		
-	/*		if(rs.next()) {
-				User user=new User(
-									rs.getString("userId"),
-									rs.getString("password"),
-									rs.getString("name"), 
-									rs.getString("email"));
-				return user;
-				
-			}*/
+
 			return new User(
 					rs.getString("userId"),
 					rs.getString("password"),

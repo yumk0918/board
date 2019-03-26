@@ -12,25 +12,22 @@
 		<div class="col-lg-8">
 			<div class="jumbotron" style="padding-top:20px;">
 				<c:choose>
-					<c:when test="${empty user.userId }">
-						<h2 style="text-align:center">회원가입</h2>
+					<c:when test="${isUpdate }">
+						<c:set var="pageName" value="개인정보수정"/>
+						<c:set var="actionUrl" value="/users/update"/>
 					</c:when>
 					<c:otherwise>
-						<h2 style="text-align:center">개인정보수정</h2>
+						<c:set var="pageName" value="회원가입"/>
+						<c:set var="actionUrl" value="/users/create"/>
 					</c:otherwise>
 				</c:choose>				
-				
-				<c:set var="actionUrl" value="/users/create"/>
-				<c:if test="${not empty user.userId }">
-					<c:set var="actionUrl" value="/users/update"/>
-				</c:if>
-				
+				<h2 style="text-align:center">${pageName }</h2>
 				<form method="post" class="form-horizontal" action="${actionUrl }">
 
 					<div class="form-group">
 						<label  class="control-label col-sm-2" for="userId">아이디 : </label>
 						<c:choose>
-						<c:when test="${empty user.userId }">
+						<c:when test="${!isUpdate}">
 							<div class="col-sm-10">
 								<input type="text" class="form-control"  name="userId" maxlength="20" value="${user.userId}">
 							</div>
@@ -47,7 +44,7 @@
 					<div class="form-group">
 					<label  class="control-label col-sm-2" for="password">비밀번호 : </label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control"  name="password" maxlength="20">
+							<input type="password" class="form-control"  name="password" maxlength="20" value="${user.password}">
 						</div>
 					</div>
 					
@@ -64,11 +61,17 @@
 						</div>
 					</div>
 					<c:set var="submitValue" value="회원가입" />
-					<c:if test="${not empty user.userId }">
+					<c:if test="${isUpdate  }">
 						<c:set var="submitValue" value="수정" />
 					</c:if>
 					<input type="submit" class="btn btn-primary btn-lg form-control" value="${submitValue }">								
-
+					<div class="form-group">
+					</div>
+					<c:if test="${ not empty errorMessage}">
+						<div class="form-group">
+							<label class="error" style="color:red;">${errorMessage}</label>
+						</div>
+					</c:if>
 				</form>
 			</div>
 		</div>

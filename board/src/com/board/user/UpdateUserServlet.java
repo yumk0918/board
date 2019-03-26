@@ -15,18 +15,17 @@ import javax.validation.Validator;
 
 import com.board.support.MyValidatorFactory;
 
-@WebServlet("/users/create")
-public class CreateUserServlet extends HttpServlet {
+@WebServlet("/users/update")
+public class UpdateUserServlet extends HttpServlet {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		//4자 이상, 12자 이하 , 영문자/숫자만 허용
 		String userId =request.getParameter("userId");
 		String password =request.getParameter("password");
-		// 2자 이상, 10자 이하
 		String name =request.getParameter("name");
 		String email =request.getParameter("email");
-		System.out.print(name);
+		
 		User user=new User(userId, password, name, email);
 		
 		Validator validator= MyValidatorFactory.createVaildator();
@@ -34,15 +33,16 @@ public class CreateUserServlet extends HttpServlet {
                 validator.validate(user);
 		if(constraintViolations.size()>0) {
 			request.setAttribute("user", user);
+			request.setAttribute("isUpdate", true);
 			String errorMessage=constraintViolations.iterator().next().getMessage();
 			forwardJSP(request, response, errorMessage);
 			return;
 		}
+		
 		UserDAO userDAO=new UserDAO();
 		try {
-			userDAO.addUser(user);
+			userDAO.updateUser(user);
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 		response.sendRedirect("/");
 	}
@@ -52,5 +52,4 @@ public class CreateUserServlet extends HttpServlet {
 		RequestDispatcher rd=request.getRequestDispatcher("/form.jsp");
 		rd.forward(request, response);
 	}
-
 }
