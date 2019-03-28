@@ -15,10 +15,12 @@
 					<c:when test="${isUpdate }">
 						<c:set var="pageName" value="개인정보수정"/>
 						<c:set var="actionUrl" value="/users/update"/>
+						<c:set var="submitValue" value="수정" />
 					</c:when>
 					<c:otherwise>
 						<c:set var="pageName" value="회원가입"/>
 						<c:set var="actionUrl" value="/users/create"/>
+						<c:set var="submitValue" value="회원가입" />
 					</c:otherwise>
 				</c:choose>				
 				<h2 style="text-align:center">${pageName }</h2>
@@ -60,10 +62,7 @@
 							<input type="email" class="form-control"name="email" maxlength="20" value="${user.email}">
 						</div>
 					</div>
-					<c:set var="submitValue" value="회원가입" />
-					<c:if test="${isUpdate  }">
-						<c:set var="submitValue" value="수정" />
-					</c:if>
+					
 					<input type="submit" class="btn btn-primary btn-lg form-control" value="${submitValue }">								
 					<div class="form-group">
 					</div>

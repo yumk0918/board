@@ -14,11 +14,6 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/users/updateForm")
 public class UpdateFormUserServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-    public UpdateFormUserServlet() {
-        super();
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {

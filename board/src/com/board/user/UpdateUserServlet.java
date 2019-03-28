@@ -1,6 +1,7 @@
 package com.board.user;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.Set;
 
@@ -10,8 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+
+import org.apache.commons.beanutils.BeanUtilsBean;
 
 import com.board.support.MyValidatorFactory;
 
@@ -20,13 +24,22 @@ public class UpdateUserServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String userId =request.getParameter("userId");
-		String password =request.getParameter("password");
-		String name =request.getParameter("name");
-		String email =request.getParameter("email");
 		
-		User user=new User(userId, password, name, email);
+		request.setCharacterEncoding("UTF-8");
+		
+		User user=new User();
+		try {
+			BeanUtilsBean.getInstance().populate(user, request.getParameterMap());
+		} catch (IllegalAccessException | InvocationTargetException e1) {
+			throw new ServletException(); 
+		}
+		
+/*		HttpSession session=request.getSession();
+		String sessionUserId=SessionUtils.getStringValue(session,LoginServlet.SESSION_USER_ID);
+		if(!user.isSameUser(sessionUserId)) {
+			response.sendRedirect("/");
+			return;
+		}*/
 		
 		Validator validator= MyValidatorFactory.createVaildator();
         Set<ConstraintViolation<User>> constraintViolations =
