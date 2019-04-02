@@ -118,7 +118,7 @@
 					<overWriteSnapshots>false</overWriteSnapshots>
 					<overWriteIfNewer>true</overWriteIfNewer>
 				</configuration>
-			</plugin> 
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -126,7 +126,7 @@
 					<warSourceDirectory>webapp</warSourceDirectory>
 					<webXml>webapp/WEB-INF/web.xml</webXml>
 				</configuration>
-			</plugin>-->
+			</plugin>
 		</plugins>
 	</build>
 </project>
