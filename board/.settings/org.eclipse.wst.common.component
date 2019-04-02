@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="board">
+  <wb-module deploy-name="firstboard">
+    <property name="context-root" value="/"/>
+    <property name="java-output-path" value="/webapp/WEB-INF/classes"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
-        <wb-resource deploy-path="/" source-path="/WebContent"/>
-        <property name="java-output-path" value="/board/build/classes"/>
-        <property name="context-root" value="board"/>
-    </wb-module>
+        <wb-resource deploy-path="/" source-path="/webapp"/>
+    <dependent-module archiveName="gson-2.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/google/code/gson/gson/2.3/gson-2.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-logging-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="javax.el-api-3.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jboss-logging-3.3.2.Final.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jstl-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/jstl/jstl/1.2/jstl-1.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="mysql-connector-java-5.1.35.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/mysql/mysql-connector-java/5.1.35/mysql-connector-java-5.1.35.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-beanutils-1.9.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-collections-3.2.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="hibernate-validator-6.0.16.Final.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/validator/hibernate-validator/6.0.16.Final/hibernate-validator-6.0.16.Final.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="validation-api-2.0.1.Final.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="classmate-1.3.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/fasterxml/classmate/1.3.4/classmate-1.3.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+  </wb-module>
 </project-modules>
