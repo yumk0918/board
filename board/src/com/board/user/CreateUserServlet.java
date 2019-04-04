@@ -15,15 +15,16 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.apache.commons.beanutils.BeanUtilsBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.board.support.MyValidatorFactory;
 
 @WebServlet("/users/create")
 public class CreateUserServlet extends HttpServlet {
+	private static final Logger logger = LoggerFactory.getLogger(CreateUserServlet.class);
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
 		//JavaBeanUtils
 		User user=new User();
 		try {
@@ -31,7 +32,7 @@ public class CreateUserServlet extends HttpServlet {
 		} catch (IllegalAccessException | InvocationTargetException e1) {
 			throw new ServletException(); 
 		}
-		
+		logger.debug("User : {}",user);
 /*		//4자 이상, 12자 이하 , 영문자/숫자만 허용
 		String userId =request.getParameter("userId");
 		String password =request.getParameter("password");
