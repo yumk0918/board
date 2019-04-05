@@ -55,6 +55,12 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.16.Final</version>
 		</dependency>
+
+		<dependency>
+			<groupId> org.glassfish </groupId>
+			<artifactId> javax.el </artifactId>
+			<version> 3.0.1-b09 </version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -85,17 +91,10 @@
 			</plugin>
 
 
-<!-- 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>3.1.1</version>
-				<configuration>
-					<outputDirectory>${project.basedir}/webapp/WEB-INF/lib</outputDirectory>
-					<overWriteReleases>false</overWriteReleases>
-					<overWriteSnapshots>false</overWriteSnapshots>
-					<overWriteIfNewer>true</overWriteIfNewer>
-				</configuration>
-			</plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
+				<version>3.1.1</version> <configuration> <outputDirectory>${project.basedir}/webapp/WEB-INF/lib</outputDirectory> 
+				<overWriteReleases>false</overWriteReleases> <overWriteSnapshots>false</overWriteSnapshots> 
+				<overWriteIfNewer>true</overWriteIfNewer> </configuration> </plugin> -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
