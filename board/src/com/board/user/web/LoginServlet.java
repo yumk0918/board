@@ -1,4 +1,4 @@
-package com.board.user;
+package com.board.user.web;
 
 import java.io.IOException;
 
@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.board.user.PasswordMismatchException;
+import com.board.user.User;
+import com.board.user.UserNotFoundException;
+
 @WebServlet("/users/login")
 public class LoginServlet extends HttpServlet {
 	public static final String SESSION_USER_ID = "userId";
@@ -19,14 +23,14 @@ public class LoginServlet extends HttpServlet {
 		String password =request.getParameter("password");
 		try{
 			User.login(userId, password);
-			// sessionÀ» °¡Á®¿Ã ¼ö ¾øÀ½ (Servlet)
+			// sessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (Servlet)
 			HttpSession session=request.getSession();
 			session.setAttribute(SESSION_USER_ID, userId);
 			response.sendRedirect("/");
 		}catch(UserNotFoundException e){
-			forwardJSP(request, response, "Á¸ÀçÇÏÁö ¾Ê´Â »ç¿ëÀÚÀÔ´Ï´Ù. ´Ù½Ã ·Î±×ÀÎÇÏ¼¼¿ä.");
+			forwardJSP(request, response, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.");
 		 }catch(PasswordMismatchException e){
-			 forwardJSP(request, response, "ºñ¹Ð¹øÈ£°¡ Æ²¸³´Ï´Ù. ´Ù½Ã ·Î±×ÀÎÇÏ¼¼¿ä.");
+			 forwardJSP(request, response, "ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.");
 		 }
 	}
 

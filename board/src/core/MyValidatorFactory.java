@@ -1,4 +1,4 @@
-package com.board.support;
+package core;
 
 import javax.validation.Validation;
 import javax.validation.Validator;

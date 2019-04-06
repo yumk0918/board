@@ -1,4 +1,4 @@
-package com.board.support;
+package core;
 import java.io.IOException;
 
 import javax.servlet.Filter;
