@@ -2,7 +2,6 @@ package com.board.user;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
@@ -51,10 +49,7 @@ public class UpdateUserServlet extends HttpServlet {
 		}
 		
 		UserDAO userDAO=new UserDAO();
-		try {
-			userDAO.updateUser(user);
-		} catch (SQLException e) {
-		}
+		userDAO.updateUser(user);
 		response.sendRedirect("/");
 	}
 	private void forwardJSP(HttpServletRequest request, HttpServletResponse response,String errorMessage)

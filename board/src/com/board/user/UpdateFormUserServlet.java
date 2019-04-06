@@ -1,7 +1,6 @@
 package com.board.user;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,16 +28,12 @@ public class UpdateFormUserServlet extends HttpServlet {
 		}
 		String userId=(String)object;
 		logger.debug("User Id {} ",userId);
-		UserDAO userDao=new UserDAO();
-		try {
-			User user=userDao.findByUserId(userId);
-			request.setAttribute("isUpdate", true);
-			request.setAttribute("user", user);
-			RequestDispatcher rd=request.getRequestDispatcher("/form.jsp");
-			rd.forward(request, response);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		UserDAO userDao=new UserDAO();	
+		User user = userDao.findByUserId(userId);
+		request.setAttribute("isUpdate", true);
+		request.setAttribute("user", user);
+		RequestDispatcher rd = request.getRequestDispatcher("/form.jsp");
+		rd.forward(request, response);	
 	}
 
 }

@@ -1,7 +1,4 @@
 package com.board.user;
-
-import java.sql.SQLException;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -86,13 +83,7 @@ public class User {
 	
 	public static boolean login(String userId, String password) throws UserNotFoundException, PasswordMismatchException {
 		UserDAO userDAO=new UserDAO();
-		User user=null;
-		try {
-			user = userDAO.findByUserId(userId);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		User user = userDAO.findByUserId(userId);
 		if(user==null) {
 			throw new UserNotFoundException();
 		}

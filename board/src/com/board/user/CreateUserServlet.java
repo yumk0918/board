@@ -2,7 +2,6 @@ package com.board.user;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -33,15 +32,6 @@ public class CreateUserServlet extends HttpServlet {
 			throw new ServletException(); 
 		}
 		logger.debug("User : {}",user);
-/*		//4자 이상, 12자 이하 , 영문자/숫자만 허용
-		String userId =request.getParameter("userId");
-		String password =request.getParameter("password");
-		// 2자 이상, 10자 이하
-		String name =request.getParameter("name");
-		String email =request.getParameter("email");
-			
-		System.out.print(name);
-		User user=new User(userId, password, name, email);*/
 		
 		Validator validator= MyValidatorFactory.createVaildator();
         Set<ConstraintViolation<User>> constraintViolations =
@@ -53,11 +43,8 @@ public class CreateUserServlet extends HttpServlet {
 			return;
 		}
 		UserDAO userDAO=new UserDAO();
-		try {
-			userDAO.addUser(user);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		userDAO.addUser(user);
+		
 		response.sendRedirect("/");
 	}
 	private void forwardJSP(HttpServletRequest request, HttpServletResponse response,String errorMessage)

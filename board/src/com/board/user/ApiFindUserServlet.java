@@ -2,7 +2,6 @@ package com.board.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +24,6 @@ public class ApiFindUserServlet extends HttpServlet {
 		}
 		
 		UserDAO userDao=new UserDAO();
-		try {
 			User user=userDao.findByUserId(userId);
 			if(user==null) {
 				return;
@@ -39,9 +37,6 @@ public class ApiFindUserServlet extends HttpServlet {
 			
 			PrintWriter out=response.getWriter();
 			out.println(jsonData);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.board.support;
+package com.board.support.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

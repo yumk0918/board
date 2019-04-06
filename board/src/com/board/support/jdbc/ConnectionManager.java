@@ -1,11 +1,11 @@
-package com.board.support;
+package com.board.support.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConnectionManager {
 	public static Connection getConnection(){
-		String url="jdbc:mysql://localhost:3306/study"; //µ¥ÀÌÅÍº£ÀÌ½º ÀÌ¸§
+		String url="jdbc:mysql://localhost:3306/study"; //ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½Ì¸ï¿½
 		String id="yumk";
 		String pw="password";
 		try {
