@@ -18,4 +18,9 @@ public class Database {
 		
 		System.out.println("user : "+user.toString());
 	}
+	
+	// 입력값인 userId를 받아 map에 저장되어 있는 데이터 중 userId를 키값으로 보내서 값이 있다면 리턴
+	public static User findUserId(String userId) {
+		return users.get(userId);
+	}
 }
