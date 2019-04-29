@@ -13,23 +13,23 @@
 	<h1 class="text-center">회원가입</h1>
 	<p></p>
 	
-	<form action="/form_action.jsp" method="post">
+	<form action="./form_action.jsp" method="post">
 	  <div class="form-group mt-5">
 	    <label for="userId">ID</label>
-	    <input type="text" class="form-control" placeholder="Enter ID">
+	    <input type="text" name="userId" class="form-control" placeholder="Enter ID">
 	  <!--   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 	  </div>
 	  <div class="form-group">
-	    <label for="userPs">Password</label>
-	    <input type="password" class="form-control" placeholder="Enter Password">
+	    <label for="password">Password</label>
+	    <input type="password" name="password" class="form-control" placeholder="Enter Password">
 	  </div>
 	  <div class="form-group">
-	    <label for="userName">Name</label>
-	    <input type="text" class="form-control" placeholder="Enter Name">
+	    <label for="name">Name</label>
+	    <input type="text" name="name" class="form-control" placeholder="Enter Name">
 	  </div>
 	  <div class="form-group">
-	    <label for="userEmail">Email address</label>
-	    <input type="email" class="form-control" placeholder="Enter Email">
+	    <label for="email">Email address</label>
+	    <input type="email" name="email" class="form-control" placeholder="Enter Email">
 	  </div>
 	  <button type="submit" class="mt-5 btn btn-primary btn-lg btn-block">Submit</button>
 	</form>
