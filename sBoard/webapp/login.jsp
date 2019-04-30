@@ -17,13 +17,24 @@
 	  <div class="form-group mt-5">
 	    <label for="userId">ID</label>
 	    <input type="text" name="userId" class="form-control" placeholder="Enter ID">
-	  <!--   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 	  </div>
 	  <div class="form-group">
 	    <label for="password">Password</label>
 	    <input type="password" name="password" class="form-control" placeholder="Enter Password">
 	  </div>
-	  <button type="submit" class="mt-5 btn btn-primary btn-lg btn-block">Login</button>
+	  
+	  <button type="submit" class="mt-5 mb-2 btn btn-primary btn-lg btn-block">Login</button>
+<% 
+	// 전달받은 errorMessage를 저장
+	// errorMessage가 null이 아닌 경우에만 화면에 에러 메시지가 보이게 한다.
+	Object errorMessage=request.getAttribute("errorMessage");
+	if(errorMessage !=null)
+	{
+%>
+	<small id="error" class="form-text text-center text-danger"><%=errorMessage%></small>
+<%
+	}
+%>	
 	</form>
 
 	</div>
