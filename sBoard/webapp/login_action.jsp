@@ -5,13 +5,10 @@
 	String userId=request.getParameter("userId");
 	String password=request.getParameter("password");
 	
-	User user=Database.findUserId(userId);
-	if(user==null){
-		// 사용자가 존재하지 않는다는 것을 에러 메시지 전송
-		
+	// 로그인 성공 : 로그인 상태 정보를 유지 (session)
+	if(User.login(userId, password)){
+		session.setAttribute("userId", userId);
 	}
-	if(password.equals(user.getPassword())){
-		// 로그인 처리
-		
-	}
+	// 로그인 성공 : index.jsp로 이동 -> navbar : 로그아웃으로 변환
+	response.sendRedirect("/sBoard");
 %>

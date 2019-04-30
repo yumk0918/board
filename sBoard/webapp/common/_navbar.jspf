@@ -7,21 +7,33 @@
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
-	
+<%
+	// session에서 userId 속성을 가져 옴
+	Object userId=session.getAttribute("userId");
+%>	
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
+<%
+if(userId==null){ 
+%>
 	      <li class="nav-item">
 	        <a class="nav-link" href="/sBoard/form.jsp">회원가입<span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="/sBoard/login.jsp">로그인</a>
 	      </li>
+<%
+}else{	// 로그인 성공
+%>
 	     <li class="nav-item">
 	        <a class="nav-link" href="#">개인정보수정</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="#">로그아웃</a>
 	      </li>
+<%
+}
+%>
 	    </ul>
 	    <form class="form-inline my-2 my-lg-0">
 	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
