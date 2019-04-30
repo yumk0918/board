@@ -13,7 +13,7 @@
 	<h1 class="text-center">회원가입</h1>
 	<p></p>
 	
-	<form action="./form_action.jsp" method="post">
+	<form action="/sBoard/users/save" method="post">
 	  <div class="form-group mt-5">
 	    <label for="userId">ID</label>
 	    <input type="text" name="userId" class="form-control" placeholder="Enter ID">

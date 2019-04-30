@@ -12,7 +12,7 @@
 	<div class="container">
 	<h1 class="text-center">로그인</h1>
 	<p></p>
-	<form action="./login_action.jsp" method="post">
+	<form action="/sBoard/users/login" method="post">
 	
 	  <div class="form-group mt-5">
 	    <label for="userId">ID</label>
