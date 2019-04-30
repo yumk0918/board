@@ -24,17 +24,15 @@
 	  </div>
 	  
 	  <button type="submit" class="mt-5 mb-2 btn btn-primary btn-lg btn-block">Login</button>
-<% 
-	// 전달받은 errorMessage를 저장
-	// errorMessage가 null이 아닌 경우에만 화면에 에러 메시지가 보이게 한다.
-	Object errorMessage=request.getAttribute("errorMessage");
-	if(errorMessage !=null)
-	{
-%>
-	<small id="error" class="form-text text-center text-danger"><%=errorMessage%></small>
-<%
-	}
-%>	
+<!-- 
+	전달받은 errorMessage를 저장
+	errorMessage가 null이 아닌 경우에만 화면에 에러 메시지가 보이게 한다.
+	표현언어(EL)를 사용하는 경우 자동으로 errorMessage를 추출
+ -->
+<c:if test="${not empty errorMessage }">
+	<small id="error" class="form-text text-center text-danger">${errorMessage}</small>
+</c:if>
+	
 	</form>
 
 	</div>
