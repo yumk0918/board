@@ -1,7 +1,7 @@
 package com.board.user;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-
+import static org.junit.Assert.assertNull;
 import java.sql.Connection;
 
 import org.junit.Before;
@@ -24,14 +24,26 @@ public class UserDAOTest {
 	
 	@Test // insert문 : 회원가입
 	public void addUser() throws Exception{
-		userDao.addUser(UserTest.TEST_USER);
-	}
-	
-	@Test // select문 : userId조회
-	public void findByUserId() throws Exception{
-		User user=userDao.findByUserId("userId");
-		// equal()메서드가 존재해야 Test가 가능하다.
-		assertEquals(UserTest.TEST_USER, user);
+		crud();
 	}
 
+	@Test // insert문 : 회원가입 + delete문 + select문 : userId조회
+	public void crud() throws Exception{
+		User user=UserTest.TEST_USER;
+		// 이전에 테스트에서 생성한 userId를 삭제
+		userDao.removeUser(user.getUserId());
+		userDao.addUser(user);
+		
+		User dbuser=userDao.findByUserId(user.getUserId());
+		// equal()메서드가 존재해야 Test가 가능하다.
+		assertEquals(user, dbuser);
+	}
+	
+	@Test // delete문
+	public void whenNotUserFind() throws Exception{
+		User user=UserTest.TEST_USER;
+		userDao.removeUser(user.getUserId());
+		User dbuser=userDao.findByUserId(user.getUserId());
+		assertNull(dbuser);
+	}
 }
