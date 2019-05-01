@@ -1,42 +1,41 @@
 package com.board.user;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-import com.board.db.Database;
 
 public class UserTest {
 	
-	// Áßº¹ Á¦°Å (public static ¼±¾ğ : ´Ù¸¥ Å¬·¡½º¿¡¼­ »ç¿ëÇÏ±â À§ÇØ)
+	// ì¤‘ë³µ ì œê±° (public static ì„ ì–¸ : ë‹¤ë¥¸ í´ë˜ìŠ¤ì—ì„œ ì‚¬ìš©í•˜ê¸° ìœ„í•´)
 	public static User TEST_USER=new User("userId", "password","name","email@naver.com");
 	
-	@Test // userId°¡ ÀÌ¹Ì ÀÖ´Ù°í °¡Á¤ ÇÏ¿¡ password°¡ ¸Â´ÂÁö È®ÀÎ
+	@Test // userIdê°€ ì´ë¯¸ ìˆë‹¤ê³  ê°€ì • í•˜ì— passwordê°€ ë§ëŠ”ì§€ í™•ì¸
 	public void matchPassword() {
 		assertTrue(TEST_USER.matchPassword("password"));
 	}
 	
-	@Test // userId°¡ ÀÌ¹Ì ÀÖ´Ù°í °¡Á¤ ÇÏ¿¡ password°¡ Æ²·È´ÂÁö È®ÀÎ
+	@Test // userIdê°€ ì´ë¯¸ ìˆë‹¤ê³  ê°€ì • í•˜ì— passwordê°€ í‹€ë ¸ëŠ”ì§€ í™•ì¸
 	public void notMatchPassword() {
 		assertFalse(TEST_USER.matchPassword("password2"));
 	}
 	
-	@Test // ·Î±×ÀÎ ¼º°øÇÑ °æ¿ì
+	@Test // ë¡œê·¸ì¸ ì„±ê³µí•œ ê²½ìš°
 	public void login() throws Exception{
 		User user=UserTest.TEST_USER;
-		Database.addUser(user);
+		UserDAO userDAO=new UserDAO();
+		userDAO.addUser(user);
 		assertTrue(User.login(TEST_USER.getUserId(),TEST_USER.getPassword()));
 	}
 	
-	@Test(expected=UserNotFoundException.class) // userId Á¸ÀçÇÏÁö ¾ÊÀº °æ¿ì, ¿¹¿ÜÃ³¸®
+	@Test(expected=UserNotFoundException.class) // userId ì¡´ì¬í•˜ì§€ ì•Šì€ ê²½ìš°, ì˜ˆì™¸ì²˜ë¦¬
 	public void loginWhenNotExistedUser() throws Exception{
 		User.login("userId2",TEST_USER.getPassword());
 	}
 	
-	@Test(expected=PasswordMismatchExpcetion.class) // password ÀÏÄ¡ÇÏÁö ¾ÊÀº °æ¿ì, ¿¹¿ÜÃ³¸®
+	@Test(expected=PasswordMismatchExpcetion.class) // password ì¼ì¹˜í•˜ì§€ ì•Šì€ ê²½ìš°, ì˜ˆì™¸ì²˜ë¦¬
 	public void loginWhenPasswordMismatch() throws Exception{
 		User user=UserTest.TEST_USER;
-		Database.addUser(user);
+		UserDAO userDAO=new UserDAO();
+		userDAO.addUser(user);
 		User.login(TEST_USER.getUserId(),"password2");
 	}
 }
