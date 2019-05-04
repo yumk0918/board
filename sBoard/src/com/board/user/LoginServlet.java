@@ -13,8 +13,9 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/users/login")
 public class LoginServlet extends HttpServlet {
 
+	public static final String SESSION_USER_ID = "userId";
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId=request.getParameter("userId");
+		String userId=request.getParameter(SESSION_USER_ID);
 		String password=request.getParameter("password");
 		
 		
@@ -25,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 			// 서블릿에서는 request에서 담긴 session을 얻어 올 수 있음
 			HttpSession session=request.getSession();
 			// 로그인 성공 : 로그인 상태 정보를 유지 (session)
-			session.setAttribute("userId", userId);
+			session.setAttribute(SESSION_USER_ID, userId);
 			
 			// 로그인 성공 : index.jsp로 이동 -> navbar : 로그아웃으로 변환
 			response.sendRedirect("/sBoard");	

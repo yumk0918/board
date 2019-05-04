@@ -37,6 +37,13 @@ public class UserDAOTest {
 		User dbuser=userDao.findByUserId(user.getUserId());
 		// equal()메서드가 존재해야 Test가 가능하다.
 		assertEquals(user, dbuser);
+		
+		// 수정이 됐는지 확인하는 테스트
+		User updateUser=new User(user.getUserId(),"uPassword","uName","uemail@naver.com");
+		userDao.updateUser(updateUser);
+		
+		dbuser=userDao.findByUserId(updateUser.getUserId());
+		assertEquals(updateUser, dbuser);
 	}
 	
 	@Test // delete문
