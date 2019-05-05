@@ -2,10 +2,16 @@ package com.board.user;
 
 import java.sql.SQLException;
 
+import com.google.gson.annotations.Expose;
+
 public class User {
+	@Expose
 	private String userId;
+	@Expose(serialize=false) // 데이터를 가져올 때 비밀번호가 안 보이게 함
 	private String password;
+	@Expose
 	private String name;
+	@Expose
 	private String email;
 	
 	// 생성자 만들기 : 4개의 정보가 다 있어야 User 객체를 만들어야 한다.
