@@ -15,14 +15,16 @@ import javax.servlet.http.HttpSession;
 public class UpdateFormUserServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session에 있는 userId를 가져 옴
+		// session에 userId가 있는지 확인하고 없다면 index.jsp이동
 		HttpSession session=request.getSession();
-		Object object=session.getAttribute(LoginServlet.SESSION_USER_ID);
-		if(object==null) {
+
+		// session에 있는 userId를 가져오기
+		String userId=SessionUtils.getStringValue(session, LoginServlet.SESSION_USER_ID);
+		if(userId==null) {
 			response.sendRedirect("/sBoard");
 			return;
 		}
-		String userId=(String)object;
+		
 		System.out.println("User Id : "+userId);
 		UserDAO userDao=new UserDAO();
 		try {
