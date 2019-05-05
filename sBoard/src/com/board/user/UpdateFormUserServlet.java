@@ -28,7 +28,7 @@ public class UpdateFormUserServlet extends HttpServlet {
 		try {
 			User user=userDao.findByUserId(userId);
 			request.setAttribute("user", user); // User객체를 전달
-			RequestDispatcher rd=request.getRequestDispatcher("/update_form.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("/form.jsp");
 			rd.forward(request, response);
 		} catch (SQLException e) { }
 		
