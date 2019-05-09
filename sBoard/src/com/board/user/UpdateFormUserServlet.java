@@ -29,6 +29,8 @@ public class UpdateFormUserServlet extends HttpServlet {
 		UserDAO userDao=new UserDAO();
 		try {
 			User user=userDao.findByUserId(userId);
+			// 개인정보수정이라는 것을 인식시킴
+			request.setAttribute("isUpdate", true);
 			request.setAttribute("user", user); // User객체를 전달
 			RequestDispatcher rd=request.getRequestDispatcher("/form.jsp");
 			rd.forward(request, response);

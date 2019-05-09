@@ -1,17 +1,27 @@
 package com.board.user;
 
 import java.sql.SQLException;
-
+import javax.validation.constraints.*;
 import com.google.gson.annotations.Expose;
 
 public class User {
 	@Expose
+	@NotNull
+	@Size(min = 4, max = 12)
 	private String userId;
+	
+	@NotNull
+	@Size(min = 4, max = 12)
 	@Expose(serialize=false) // 데이터를 가져올 때 비밀번호가 안 보이게 함
 	private String password;
+	
 	@Expose
+	@NotNull
+	@Size(min = 2, max = 10)
 	private String name;
+	
 	@Expose
+	@Email
 	private String email;
 	
 	// 생성자 만들기 : 4개의 정보가 다 있어야 User 객체를 만들어야 한다.

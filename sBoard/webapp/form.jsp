@@ -11,14 +11,14 @@
 	<div class="jumbotron jumbotron">
 	<div class="container">
 	<c:choose>
-		<c:when test="${empty user.userId }">
-			<h1 class="text-center">회원가입</h1>
-			<c:set var="actionURL" value="/sBoard/users/save"/>
-		</c:when>
-		<c:otherwise>
+		<c:when test="${isUpdate}">
 			<h1 class="text-center">개인정보수정</h1>
 			<!-- 수정된 내용을 서버에 전달해서 저장 -->
 			<c:set var="actionURL" value="/sBoard/users/update"/>
+			</c:when>
+		<c:otherwise>
+			<h1 class="text-center">회원가입</h1>
+			<c:set var="actionURL" value="/sBoard/users/save"/>
 		</c:otherwise>
 	</c:choose>
 	<p></p>
@@ -28,13 +28,13 @@
 	    <label for="userId">사용자 아이디</label>
 	    
 	  	<c:choose>
-			<c:when test="${empty user.userId }">
-			    <input type="text" name="userId" class="form-control" value="${user.userId}">
+			<c:when test="${isUpdate}">
+				<!-- 수정할 경우 서버로 값이 전달 -->
+				<input type="hidden" name="userId" value="${user.userId}"/>
+				<br>${user.userId}
 			</c:when>
 			<c:otherwise>
-			<!-- 수정할 경우 서버로 값이 전달 -->
-			 <input type="hidden" name="userId" value="${user.userId}"/>
-				<br>${user.userId}
+			    <input type="text" name="userId" class="form-control" value="${user.userId}">
 			</c:otherwise>
 		</c:choose>
 	  </div>
@@ -50,7 +50,13 @@
 	    <label for="email">이메일</label>
 	    <input type="email" name="email" class="form-control" value="${user.email}">
 	  </div>
+	  
 	  <button type="submit" class="mt-5 btn btn-primary btn-lg btn-block">Submit</button>
+		
+		<!-- 유효성 체크 관련 에러 메시지 -->
+	  <c:if test="${not empty errorMessage }">
+		<small id="error" class="form-text text-center text-danger">${errorMessage}</small>
+	  </c:if>
 	</form>
 
 	</div>
