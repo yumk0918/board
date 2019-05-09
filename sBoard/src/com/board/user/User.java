@@ -39,19 +39,35 @@ public class User {
 	public String getUserId() {
 		return userId;
 	}
-	
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public String getPassword() {
 		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getName() {
 		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getEmail() {
 		return email;
 	}
-	
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
@@ -79,7 +95,14 @@ public class User {
 		}
 		return true;
 	}
-
+	// 같은 userId인지 확익하는 메서드
+	public boolean isSameUser(String newUserId) {
+		if(this.userId==null) {
+			return false;
+		}
+		return this.userId.equals(newUserId);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

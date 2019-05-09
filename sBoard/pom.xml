@@ -27,13 +27,17 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.16.Final</version>
 		</dependency>
-
 		<dependency>
 			<groupId> org.glassfish </groupId>
 			<artifactId> javax.el </artifactId>
 			<version> 3.0.1-b09 </version>
 		</dependency>
-	
+		
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<sourceDirectory>src</sourceDirectory>

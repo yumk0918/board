@@ -1,6 +1,7 @@
 package com.board.user;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.Set;
 
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+
+import org.apache.commons.beanutils.BeanUtilsBean;
 
 import com.board.support.MyValidatorFactory;
 
@@ -33,19 +36,21 @@ public class UpdateUserServlet extends HttpServlet {
 			return;
 		}
 		
-		String userId=request.getParameter("userId");
-		if(!sessionUserId.equals(userId)) {
+		// 자바빈 매핑 (commons-beanutils)
+		User user=new User();
+		try {
+			BeanUtilsBean.getInstance().populate(user, request.getParameterMap());
+		} catch (IllegalAccessException|InvocationTargetException e1) {
+			throw new ServletException(e1);
+		}
+		
+		// session에 있는 userId와 User객체에 저장된 userId를 비교
+		if(!user.isSameUser(sessionUserId)) {
 			response.sendRedirect("/sBoard");
 			return;
 		}
 		
-		String password=request.getParameter("password");
-		String name=request.getParameter("name");
-		String email=request.getParameter("email");
-		
-		User user=new User(userId, password,name,email);
-		UserDAO userDAO=new UserDAO();
-		
+		UserDAO userDAO=new UserDAO();		
 		// 유효성 확인하기
 		Validator validator=MyValidatorFactory.createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
