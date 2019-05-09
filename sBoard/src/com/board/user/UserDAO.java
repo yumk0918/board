@@ -6,8 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAO {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class UserDAO {
+	private static final Logger logger = LoggerFactory.getLogger(UserDAO.class);
 	public Connection getConnection() {
 		String url = "jdbc:mysql://localhost:3306/study";
 		String id = "yumk";
@@ -18,7 +21,7 @@ public class UserDAO {
 			// 데이터베이스 커넥션 구하기
 			return DriverManager.getConnection(url, id, pw);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.debug(e.getMessage());
 			return null;
 		}
 	}

@@ -15,12 +15,15 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.apache.commons.beanutils.BeanUtilsBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import com.board.support.CharacterEncodingFilter;
 import com.board.support.MyValidatorFactory;
 
 @WebServlet("/users/save")
 public class SaveUserServlet extends HttpServlet {
-
+	private static final Logger logger = LoggerFactory.getLogger(SaveUserServlet.class);
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 자바빈 매핑 (commons-beanutils)
 		User user=new User();
@@ -29,6 +32,10 @@ public class SaveUserServlet extends HttpServlet {
 		} catch (IllegalAccessException|InvocationTargetException e1) {
 			throw new ServletException(e1);
 		}
+		// 로그 메시지
+		// level이 debug일 때만 실행 (약간의 성능 향상 -> 가독성이 떨어짐)
+		// LOG4J : if(logger.isDebugEnabled()) { 
+		logger.debug("User {}:",user);
 		
 		// 유효성 확인하기
 		Validator validator=MyValidatorFactory.createValidator();

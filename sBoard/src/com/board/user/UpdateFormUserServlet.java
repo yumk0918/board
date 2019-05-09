@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.board.support.CharacterEncodingFilter;
+
 @WebServlet("/users/updateForm")
 public class UpdateFormUserServlet extends HttpServlet {
-
+	private static final Logger logger = LoggerFactory.getLogger(UpdateFormUserServlet.class);
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// session에 userId가 있는지 확인하고 없다면 index.jsp이동
 		HttpSession session=request.getSession();
@@ -24,8 +29,7 @@ public class UpdateFormUserServlet extends HttpServlet {
 			response.sendRedirect("/sBoard");
 			return;
 		}
-		
-		System.out.println("User Id : "+userId);
+		logger.debug("User Id : {}",userId);
 		UserDAO userDao=new UserDAO();
 		try {
 			User user=userDao.findByUserId(userId);
