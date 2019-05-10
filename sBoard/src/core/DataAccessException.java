@@ -1,4 +1,4 @@
-package com.board.support.jdbc;
+package core;
 
 public class DataAccessException extends RuntimeException {
 

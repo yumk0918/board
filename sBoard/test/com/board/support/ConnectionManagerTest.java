@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import java.sql.Connection;
 import org.junit.Test;
 
-import com.board.support.jdbc.ConnectionManager;
+import core.ConnectionManager;
 
 public class ConnectionManagerTest {
 

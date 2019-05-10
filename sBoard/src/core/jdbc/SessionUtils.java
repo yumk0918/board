@@ -1,4 +1,4 @@
-package com.board.user;
+package core.jdbc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

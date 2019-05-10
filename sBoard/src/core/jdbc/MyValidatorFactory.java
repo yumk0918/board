@@ -1,4 +1,4 @@
-package com.board.support;
+package core.jdbc;
 
 import javax.validation.Validation;
 import javax.validation.Validator;

@@ -1,4 +1,4 @@
-package com.board.support.jdbc;
+package core;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

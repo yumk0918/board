@@ -1,4 +1,4 @@
-package com.board.user;
+package com.board.user.web;
 
 import java.io.IOException;
 
@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.board.user.PasswordMismatchExpcetion;
+import com.board.user.User;
+import com.board.user.UserNotFoundException;
 
 @WebServlet("/users/login")
 public class LoginServlet extends HttpServlet {

@@ -1,4 +1,4 @@
-package com.board.user;
+package com.board.user.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,7 +14,11 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.board.support.CharacterEncodingFilter;
+import com.board.user.User;
+import com.board.user.UserDAO;
+
+import core.jdbc.CharacterEncodingFilter;
+import core.jdbc.SessionUtils;
 
 @WebServlet("/users/updateForm")
 public class UpdateFormUserServlet extends HttpServlet {
