@@ -1,12 +1,17 @@
 package com.board.user;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UserDAOTest {
+	 private static final Logger logger = LoggerFactory.getLogger(UserDAOTest.class);
 	
-	// 계속 커넥션을 만들지 않기 위해서 테스트가 시작할 때 setup을 하는 테스트
+	 // 계속 커넥션을 만들지 않기 위해서 테스트가 시작할 때 setup을 하는 테스트
 	private UserDAO userDao;	
 	@Before
 	public void setup() {
@@ -43,5 +48,12 @@ public class UserDAOTest {
 		userDao.removeUser(user.getUserId());
 		User dbuser=userDao.findByUserId(user.getUserId());
 		assertNull(dbuser);
+	}
+	
+	@Test // 사용자 목록을 조회
+	public void findUsers() throws Exception{
+		List<User> users=userDao.findUsers();
+		assertTrue(users.size()>0);
+		logger.debug("Users : {}",users);
 	}
 }
