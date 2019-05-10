@@ -15,12 +15,6 @@ public class UserDAOTest {
 	public void setup() {
 		userDao = new UserDAO();
 	}
-
-	@Test // 커넥션이 생성 했는지 확인하는 테스트
-	public void test() {
-		Connection con=userDao.getConnection();
-		assertNotNull(con);
-	}
 	
 	@Test // insert문 : 회원가입
 	public void addUser() throws Exception{
