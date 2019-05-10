@@ -1,4 +1,4 @@
-package com.board.support;
+package com.board.support.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

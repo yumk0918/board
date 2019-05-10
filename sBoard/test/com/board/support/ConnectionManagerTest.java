@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import java.sql.Connection;
 import org.junit.Test;
 
+import com.board.support.jdbc.ConnectionManager;
+
 public class ConnectionManagerTest {
 
 	@Test // 커넥션이 생성했는지 확인하는 테스트

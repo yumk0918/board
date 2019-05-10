@@ -63,12 +63,7 @@ public class UpdateUserServlet extends HttpServlet {
 				return;
 		}
 				
-		try {
-			userDAO.updateUser(user);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
+		userDAO.updateUser(user);
 		response.sendRedirect("/sBoard");
 	}
 	// 개입정보수정 시 페이지 이동과 에러메시지를 전달하는 메서드

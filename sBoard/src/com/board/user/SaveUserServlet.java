@@ -47,13 +47,8 @@ public class SaveUserServlet extends HttpServlet {
 			return;
 		}
 		
-		UserDAO userDAO=new UserDAO();
-		try {
-			userDAO.addUser(user);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
+		UserDAO userDAO = new UserDAO();
+		userDAO.addUser(user);
 		response.sendRedirect("/sBoard");
 	}
 	

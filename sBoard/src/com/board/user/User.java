@@ -81,12 +81,7 @@ public class User {
 	// 로그인이 성공했는 확인하는 메서드
 	public static boolean login(String userId, String password) throws UserNotFoundException, PasswordMismatchExpcetion {
 		UserDAO userDAO=new UserDAO();
-		User user=null;
-		try {
-			user = userDAO.findByUserId(userId);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		User user = userDAO.findByUserId(userId);
 		if(user==null) {
 			throw new UserNotFoundException(); // userId가 존재하지 않을 경우, 예외 발생
 		}

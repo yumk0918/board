@@ -22,29 +22,24 @@ public class ApiFindUserServlet extends HttpServlet {
 			response.sendRedirect("/sBoard");
 			return;
 		}
-		UserDAO userDao=new UserDAO();
-		try {
-			User user=userDao.findByUserId(userId);
-			if(user==null) {
-				return;
-			}
-			
-			// user를 gson형식으로 변환
-			final GsonBuilder builder =new GsonBuilder();
-			builder.excludeFieldsWithoutExposeAnnotation();
-			final Gson gson=builder.create();
-			
-			String jsonData=gson.toJson(user);
-			
-			// 클라이언트에게 Content-Type을 알려줌
-			response.setContentType("application/json;charset=utf-8");
-			
-			PrintWriter out=response.getWriter(); 
-			out.print(jsonData);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		UserDAO userDao = new UserDAO();
+		User user = userDao.findByUserId(userId);
+		if (user == null) {
+			return;
 		}
+
+		// user를 gson형식으로 변환
+		final GsonBuilder builder = new GsonBuilder();
+		builder.excludeFieldsWithoutExposeAnnotation();
+		final Gson gson = builder.create();
+
+		String jsonData = gson.toJson(user);
+
+		// 클라이언트에게 Content-Type을 알려줌
+		response.setContentType("application/json;charset=utf-8");
+
+		PrintWriter out = response.getWriter();
+		out.print(jsonData);
 	}
 
 }
